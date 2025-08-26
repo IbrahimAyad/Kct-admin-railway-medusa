@@ -721,6 +721,166 @@ const createAdminAPIRouter = () => {
     }
   });
 
+  // PUT /admin/regions/:id - Update region
+  router.put("/regions/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log("Update region:", id, req.body);
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      // Start transaction
+      await client.query('BEGIN');
+      
+      // Update region fields
+      const updates = [];
+      const values = [];
+      let paramCount = 1;
+      
+      const updateableFields = ['name', 'currency_code', 'tax_rate', 'tax_code', 
+                                'gift_cards_taxable', 'automatic_taxes'];
+      
+      updateableFields.forEach(field => {
+        if (req.body[field] !== undefined) {
+          updates.push(`${field} = $${paramCount}`);
+          values.push(req.body[field]);
+          paramCount++;
+        }
+      });
+      
+      if (updates.length > 0) {
+        updates.push(`updated_at = NOW()`);
+        values.push(id);
+        
+        await client.query(`
+          UPDATE region 
+          SET ${updates.join(', ')}
+          WHERE id = $${paramCount}
+        `, values);
+      }
+      
+      // Update fulfillment providers if provided
+      if (req.body.fulfillment_providers) {
+        // Remove existing
+        await client.query(`
+          DELETE FROM region_fulfillment_providers WHERE region_id = $1
+        `, [id]);
+        
+        // Add new ones
+        for (const provider of req.body.fulfillment_providers) {
+          await client.query(`
+            INSERT INTO region_fulfillment_providers (region_id, provider_id)
+            VALUES ($1, $2)
+          `, [id, provider.provider_id || provider]);
+        }
+      }
+      
+      // Update payment providers if provided
+      if (req.body.payment_providers) {
+        // Remove existing
+        await client.query(`
+          DELETE FROM region_payment_providers WHERE region_id = $1
+        `, [id]);
+        
+        // Add new ones
+        for (const provider of req.body.payment_providers) {
+          await client.query(`
+            INSERT INTO region_payment_providers (region_id, provider_id)
+            VALUES ($1, $2)
+          `, [id, provider.provider_id || provider]);
+        }
+      }
+      
+      // Update countries if provided
+      if (req.body.countries) {
+        // Remove existing
+        await client.query(`
+          DELETE FROM country WHERE region_id = $1
+        `, [id]);
+        
+        // Add new ones
+        for (const country of req.body.countries) {
+          const countryCode = country.iso_2 || country;
+          await client.query(`
+            INSERT INTO country (iso_2, iso_3, num_code, name, display_name, region_id)
+            VALUES ($1, $2, $3, $4, $5, $6)
+            ON CONFLICT (iso_2) DO UPDATE SET region_id = $6
+          `, [countryCode, country.iso_3 || countryCode, country.num_code || 0, 
+              country.name || countryCode, country.display_name || countryCode, id]);
+        }
+      }
+      
+      await client.query('COMMIT');
+      
+      // Get updated region
+      const regionResult = await client.query(`
+        SELECT 
+          r.*,
+          json_agg(DISTINCT jsonb_build_object(
+            'provider_id', rfp.provider_id
+          )) FILTER (WHERE rfp.provider_id IS NOT NULL) as fulfillment_providers,
+          json_agg(DISTINCT jsonb_build_object(
+            'provider_id', rpp.provider_id
+          )) FILTER (WHERE rpp.provider_id IS NOT NULL) as payment_providers,
+          json_agg(DISTINCT c.*) FILTER (WHERE c.iso_2 IS NOT NULL) as countries,
+          cur.symbol as currency_symbol,
+          cur.name as currency_name
+        FROM region r
+        LEFT JOIN region_fulfillment_providers rfp ON r.id = rfp.region_id
+        LEFT JOIN region_payment_providers rpp ON r.id = rpp.region_id
+        LEFT JOIN country c ON r.id = c.region_id
+        LEFT JOIN currency cur ON r.currency_code = cur.code
+        WHERE r.id = $1
+        GROUP BY r.id, r.name, r.currency_code, r.tax_rate, r.tax_code,
+                 r.created_at, r.updated_at, r.deleted_at, r.metadata,
+                 r.gift_cards_taxable, r.automatic_taxes, r.tax_provider_id,
+                 cur.symbol, cur.name
+      `, [id]);
+      
+      const region = regionResult.rows[0];
+      
+      res.json({
+        region: {
+          id: region.id,
+          name: region.name,
+          currency_code: region.currency_code,
+          currency: {
+            code: region.currency_code,
+            symbol: region.currency_symbol || '$',
+            symbol_native: region.currency_symbol || '$',
+            name: region.currency_name || 'US Dollar'
+          },
+          tax_rate: region.tax_rate || 0,
+          tax_code: region.tax_code || null,
+          gift_cards_taxable: region.gift_cards_taxable || true,
+          automatic_taxes: region.automatic_taxes || true,
+          tax_provider_id: region.tax_provider_id || null,
+          fulfillment_providers: region.fulfillment_providers || [{ provider_id: 'manual' }],
+          payment_providers: region.payment_providers || [{ provider_id: 'manual' }],
+          countries: region.countries || [],
+          created_at: region.created_at,
+          updated_at: region.updated_at,
+          deleted_at: region.deleted_at,
+          metadata: region.metadata || {}
+        }
+      });
+
+    } catch (error) {
+      await client.query('ROLLBACK');
+      console.error("Update region error:", error);
+      res.status(500).json({ 
+        message: "Error updating region",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
   return router;
 };
 
