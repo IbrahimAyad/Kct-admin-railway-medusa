@@ -43,6 +43,7 @@ COPY --chown=medusa:nodejs index.js ./
 COPY --chown=medusa:nodejs index-fixed.js ./
 COPY --chown=medusa:nodejs index-fixed-v2.js ./
 COPY --chown=medusa:nodejs admin-auth-fix.js ./
+COPY --chown=medusa:nodejs admin-api-fix.js ./
 COPY --chown=medusa:nodejs start-server.js ./
 COPY --chown=medusa:nodejs start-production.js ./
 COPY --chown=medusa:nodejs data ./data
