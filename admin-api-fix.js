@@ -203,7 +203,10 @@ const createAdminAPIRouter = () => {
       await client.connect();
       
       let query = `
-        SELECT so.*, r.name as region_name, sp.name as profile_name
+        SELECT so.*, 
+               r.name as region_name, 
+               sp.name as profile_name,
+               sp.type as profile_type
         FROM shipping_option so
         LEFT JOIN region r ON so.region_id = r.id
         LEFT JOIN shipping_profile sp ON so.profile_id = sp.id
@@ -224,18 +227,20 @@ const createAdminAPIRouter = () => {
         region_id: option.region_id,
         region: {
           id: option.region_id,
-          name: option.region_name
+          name: option.region_name || 'Unknown Region'
         },
         profile_id: option.profile_id,
         profile: {
           id: option.profile_id,
-          name: option.profile_name
+          name: option.profile_name || 'Default Profile',
+          type: option.profile_type || 'default'
         },
-        provider_id: option.provider_id,
-        price_type: option.price_type,
-        amount: option.amount,
-        is_return: option.is_return,
-        admin_only: option.admin_only,
+        provider_id: option.provider_id || 'manual',
+        price_type: option.price_type || 'flat_rate',
+        amount: option.amount || 0,
+        is_return: option.is_return || false,
+        admin_only: option.admin_only || false,
+        includes_tax: option.includes_tax || false,
         requirements: option.requirements || [],
         data: option.data || {},
         metadata: option.metadata || {},
@@ -476,7 +481,10 @@ const createAdminAPIRouter = () => {
       await client.connect();
       
       const result = await client.query(`
-        SELECT so.*, r.name as region_name, sp.name as profile_name
+        SELECT so.*, 
+               r.name as region_name, 
+               sp.name as profile_name,
+               sp.type as profile_type
         FROM shipping_option so
         LEFT JOIN region r ON so.region_id = r.id
         LEFT JOIN shipping_profile sp ON so.profile_id = sp.id
@@ -496,18 +504,20 @@ const createAdminAPIRouter = () => {
           region_id: option.region_id,
           region: {
             id: option.region_id,
-            name: option.region_name
+            name: option.region_name || 'Unknown Region'
           },
           profile_id: option.profile_id,
           profile: {
             id: option.profile_id,
-            name: option.profile_name
+            name: option.profile_name || 'Default Profile',
+            type: option.profile_type || 'default'
           },
           provider_id: option.provider_id || 'manual',
           price_type: option.price_type || 'flat_rate',
-          amount: option.amount,
+          amount: option.amount || 0,
           is_return: option.is_return || false,
           admin_only: option.admin_only || false,
+          includes_tax: option.includes_tax || false,
           requirements: option.requirements || [],
           data: option.data || {},
           metadata: option.metadata || {},
