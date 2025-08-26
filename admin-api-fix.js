@@ -418,6 +418,309 @@ const createAdminAPIRouter = () => {
     }
   });
 
+  // GET /admin/shipping-profiles - List shipping profiles
+  router.get("/shipping-profiles", async (req, res) => {
+    console.log("Shipping profiles endpoint called");
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const profilesResult = await client.query(`
+        SELECT * FROM shipping_profile 
+        WHERE deleted_at IS NULL
+        ORDER BY created_at DESC
+      `);
+
+      const profiles = profilesResult.rows.map(profile => ({
+        id: profile.id,
+        name: profile.name,
+        type: profile.type || 'default',
+        metadata: profile.metadata || {},
+        created_at: profile.created_at,
+        updated_at: profile.updated_at,
+        deleted_at: profile.deleted_at
+      }));
+
+      res.json({
+        shipping_profiles: profiles,
+        count: profiles.length,
+        offset: 0,
+        limit: 100
+      });
+
+    } catch (error) {
+      console.error("Shipping profiles error:", error);
+      res.status(500).json({ 
+        message: "Error fetching shipping profiles",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
+  // GET /admin/shipping-options/:id - Get single shipping option
+  router.get("/shipping-options/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log("Get shipping option:", id);
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const result = await client.query(`
+        SELECT so.*, r.name as region_name, sp.name as profile_name
+        FROM shipping_option so
+        LEFT JOIN region r ON so.region_id = r.id
+        LEFT JOIN shipping_profile sp ON so.profile_id = sp.id
+        WHERE so.id = $1
+      `, [id]);
+
+      if (result.rows.length === 0) {
+        return res.status(404).json({ message: "Shipping option not found" });
+      }
+
+      const option = result.rows[0];
+      
+      res.json({
+        shipping_option: {
+          id: option.id,
+          name: option.name,
+          region_id: option.region_id,
+          region: {
+            id: option.region_id,
+            name: option.region_name
+          },
+          profile_id: option.profile_id,
+          profile: {
+            id: option.profile_id,
+            name: option.profile_name
+          },
+          provider_id: option.provider_id || 'manual',
+          price_type: option.price_type || 'flat_rate',
+          amount: option.amount,
+          is_return: option.is_return || false,
+          admin_only: option.admin_only || false,
+          requirements: option.requirements || [],
+          data: option.data || {},
+          metadata: option.metadata || {},
+          created_at: option.created_at,
+          updated_at: option.updated_at
+        }
+      });
+
+    } catch (error) {
+      console.error("Get shipping option error:", error);
+      res.status(500).json({ 
+        message: "Error fetching shipping option",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
+  // POST /admin/shipping-options - Create shipping option
+  router.post("/shipping-options", async (req, res) => {
+    console.log("Create shipping option:", req.body);
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const {
+        name,
+        region_id,
+        profile_id,
+        provider_id = 'manual',
+        price_type = 'flat_rate',
+        amount,
+        is_return = false,
+        admin_only = false,
+        requirements = [],
+        data = {},
+        metadata = {}
+      } = req.body;
+
+      // Generate ID
+      const id = 'so_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+
+      const result = await client.query(`
+        INSERT INTO shipping_option (
+          id, name, region_id, profile_id, provider_id,
+          price_type, amount, is_return, admin_only,
+          requirements, data, metadata, created_at, updated_at
+        ) VALUES (
+          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW(), NOW()
+        ) RETURNING *
+      `, [id, name, region_id, profile_id, provider_id, price_type, amount, 
+          is_return, admin_only, JSON.stringify(requirements), 
+          JSON.stringify(data), JSON.stringify(metadata)]);
+
+      const created = result.rows[0];
+      
+      res.status(201).json({
+        shipping_option: {
+          id: created.id,
+          name: created.name,
+          region_id: created.region_id,
+          profile_id: created.profile_id,
+          provider_id: created.provider_id,
+          price_type: created.price_type,
+          amount: created.amount,
+          is_return: created.is_return,
+          admin_only: created.admin_only,
+          requirements: created.requirements || [],
+          data: created.data || {},
+          metadata: created.metadata || {},
+          created_at: created.created_at,
+          updated_at: created.updated_at
+        }
+      });
+
+    } catch (error) {
+      console.error("Create shipping option error:", error);
+      res.status(500).json({ 
+        message: "Error creating shipping option",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
+  // PUT /admin/shipping-options/:id - Update shipping option
+  router.put("/shipping-options/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log("Update shipping option:", id, req.body);
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const updates = [];
+      const values = [];
+      let paramCount = 1;
+
+      // Build dynamic update query
+      const updateableFields = ['name', 'amount', 'price_type', 'is_return', 
+                                'admin_only', 'requirements', 'data', 'metadata'];
+      
+      updateableFields.forEach(field => {
+        if (req.body[field] !== undefined) {
+          updates.push(`${field} = $${paramCount}`);
+          if (typeof req.body[field] === 'object') {
+            values.push(JSON.stringify(req.body[field]));
+          } else {
+            values.push(req.body[field]);
+          }
+          paramCount++;
+        }
+      });
+
+      if (updates.length === 0) {
+        return res.status(400).json({ message: "No fields to update" });
+      }
+
+      updates.push(`updated_at = NOW()`);
+      values.push(id);
+
+      const result = await client.query(`
+        UPDATE shipping_option 
+        SET ${updates.join(', ')}
+        WHERE id = $${paramCount}
+        RETURNING *
+      `, values);
+
+      if (result.rows.length === 0) {
+        return res.status(404).json({ message: "Shipping option not found" });
+      }
+
+      const updated = result.rows[0];
+      
+      res.json({
+        shipping_option: {
+          id: updated.id,
+          name: updated.name,
+          region_id: updated.region_id,
+          profile_id: updated.profile_id,
+          provider_id: updated.provider_id,
+          price_type: updated.price_type,
+          amount: updated.amount,
+          is_return: updated.is_return,
+          admin_only: updated.admin_only,
+          requirements: updated.requirements || [],
+          data: updated.data || {},
+          metadata: updated.metadata || {},
+          created_at: updated.created_at,
+          updated_at: updated.updated_at
+        }
+      });
+
+    } catch (error) {
+      console.error("Update shipping option error:", error);
+      res.status(500).json({ 
+        message: "Error updating shipping option",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
+  // DELETE /admin/shipping-options/:id - Delete shipping option
+  router.delete("/shipping-options/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log("Delete shipping option:", id);
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const result = await client.query(`
+        UPDATE shipping_option 
+        SET deleted_at = NOW()
+        WHERE id = $1
+        RETURNING id
+      `, [id]);
+
+      if (result.rows.length === 0) {
+        return res.status(404).json({ message: "Shipping option not found" });
+      }
+
+      res.json({
+        id: id,
+        object: "shipping-option",
+        deleted: true
+      });
+
+    } catch (error) {
+      console.error("Delete shipping option error:", error);
+      res.status(500).json({ 
+        message: "Error deleting shipping option",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
   return router;
 };
 
