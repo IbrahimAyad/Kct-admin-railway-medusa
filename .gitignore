@@ -68,9 +68,8 @@ medusa-config-original.js
 # Deployment files with sensitive data
 deploy-*.sh
 !deploy-to-railway.sh
-start-*.js
-index-fixed*.js
-admin-auth-fix.js
+start-production.js
+start-server.js
 
 # Backup directories
 dist_backup/
