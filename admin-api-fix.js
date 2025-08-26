@@ -277,6 +277,78 @@ const createAdminAPIRouter = () => {
     }
   });
 
+  // GET /admin/fulfillment-providers - List fulfillment providers
+  router.get("/fulfillment-providers", async (req, res) => {
+    console.log("Fulfillment providers endpoint called");
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const providersResult = await client.query(`
+        SELECT * FROM fulfillment_provider WHERE is_installed = true
+      `);
+
+      const providers = providersResult.rows.map(provider => ({
+        id: provider.id,
+        is_installed: provider.is_installed
+      }));
+
+      res.json({
+        fulfillment_providers: providers,
+        count: providers.length
+      });
+
+    } catch (error) {
+      console.error("Fulfillment providers error:", error);
+      res.status(500).json({ 
+        message: "Error fetching fulfillment providers",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
+  // GET /admin/payment-providers - List payment providers
+  router.get("/payment-providers", async (req, res) => {
+    console.log("Payment providers endpoint called");
+    
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL
+    });
+
+    try {
+      await client.connect();
+      
+      const providersResult = await client.query(`
+        SELECT * FROM payment_provider WHERE is_installed = true
+      `);
+
+      const providers = providersResult.rows.map(provider => ({
+        id: provider.id,
+        is_installed: provider.is_installed
+      }));
+
+      res.json({
+        payment_providers: providers,
+        count: providers.length
+      });
+
+    } catch (error) {
+      console.error("Payment providers error:", error);
+      res.status(500).json({ 
+        message: "Error fetching payment providers",
+        error: error.message 
+      });
+    } finally {
+      await client.end();
+    }
+  });
+
   // GET /admin/currencies - List currencies
   router.get("/currencies", async (req, res) => {
     console.log("Currencies endpoint called");
