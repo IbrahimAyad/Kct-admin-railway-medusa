@@ -125,6 +125,33 @@ const createAdminAPIRouter = () => {
 
       const region = regionResult.rows[0];
       
+      // Get shipping options for this region
+      const shippingResult = await client.query(`
+        SELECT id, name, region_id, profile_id, provider_id, 
+               price_type, amount, is_return, admin_only, 
+               requirements, data, created_at, updated_at 
+        FROM shipping_option 
+        WHERE region_id = $1 AND deleted_at IS NULL
+      `, [id]);
+      
+      const shipping_options = shippingResult.rows.map(option => ({
+        id: option.id,
+        name: option.name,
+        region_id: option.region_id,
+        profile_id: option.profile_id,
+        provider_id: option.provider_id,
+        price_type: option.price_type,
+        amount: option.amount,
+        is_return: option.is_return || false,
+        admin_only: option.admin_only || false,
+        requirements: option.requirements || [],
+        data: option.data || {},
+        created_at: option.created_at,
+        updated_at: option.updated_at,
+        deleted_at: null,
+        metadata: null
+      }));
+      
       res.json({
         region: {
           id: region.id,
@@ -144,6 +171,7 @@ const createAdminAPIRouter = () => {
           fulfillment_providers: region.fulfillment_providers || [{ provider_id: 'manual' }],
           payment_providers: region.payment_providers || [{ provider_id: 'stripe' }],
           countries: region.countries || [],
+          shipping_options: shipping_options,
           created_at: region.created_at,
           updated_at: region.updated_at,
           deleted_at: region.deleted_at,
@@ -165,6 +193,7 @@ const createAdminAPIRouter = () => {
   // GET /admin/shipping-options - List shipping options
   router.get("/shipping-options", async (req, res) => {
     console.log("Shipping options endpoint called");
+    const { region_id } = req.query;
     
     const client = new Client({
       connectionString: process.env.DATABASE_URL
@@ -173,13 +202,21 @@ const createAdminAPIRouter = () => {
     try {
       await client.connect();
       
-      const shippingResult = await client.query(`
+      let query = `
         SELECT so.*, r.name as region_name, sp.name as profile_name
         FROM shipping_option so
         LEFT JOIN region r ON so.region_id = r.id
         LEFT JOIN shipping_profile sp ON so.profile_id = sp.id
         WHERE so.deleted_at IS NULL
-      `);
+      `;
+      
+      const params = [];
+      if (region_id) {
+        query += ` AND so.region_id = $1`;
+        params.push(region_id);
+      }
+      
+      const shippingResult = await client.query(query, params);
 
       const shippingOptions = shippingResult.rows.map(option => ({
         id: option.id,
@@ -199,6 +236,7 @@ const createAdminAPIRouter = () => {
         amount: option.amount,
         is_return: option.is_return,
         admin_only: option.admin_only,
+        requirements: option.requirements || [],
         data: option.data || {},
         metadata: option.metadata || {},
         created_at: option.created_at,
