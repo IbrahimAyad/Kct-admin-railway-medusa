@@ -204,9 +204,12 @@ const createAdminAPIRouter = () => {
       
       let query = `
         SELECT so.*, 
-               r.name as region_name, 
+               r.name as region_name,
+               r.currency_code as region_currency,
                sp.name as profile_name,
-               sp.type as profile_type
+               sp.type as profile_type,
+               sp.products as profile_products,
+               sp.shipping_options as profile_shipping_options
         FROM shipping_option so
         LEFT JOIN region r ON so.region_id = r.id
         LEFT JOIN shipping_profile sp ON so.profile_id = sp.id
@@ -227,25 +230,36 @@ const createAdminAPIRouter = () => {
         region_id: option.region_id,
         region: {
           id: option.region_id,
-          name: option.region_name || 'Unknown Region'
+          name: option.region_name || 'Unknown Region',
+          currency_code: option.region_currency || 'usd'
         },
         profile_id: option.profile_id,
         profile: {
           id: option.profile_id,
           name: option.profile_name || 'Default Profile',
-          type: option.profile_type || 'default'
+          type: option.profile_type || 'default',
+          products: option.profile_products || [],
+          shipping_options: option.profile_shipping_options || []
         },
         provider_id: option.provider_id || 'manual',
+        provider: {
+          id: option.provider_id || 'manual',
+          is_installed: true
+        },
         price_type: option.price_type || 'flat_rate',
         amount: option.amount || 0,
         is_return: option.is_return || false,
+        is_default: option.is_default || false,
         admin_only: option.admin_only || false,
         includes_tax: option.includes_tax || false,
+        min_subtotal: option.min_subtotal || null,
+        max_subtotal: option.max_subtotal || null,
         requirements: option.requirements || [],
         data: option.data || {},
         metadata: option.metadata || {},
         created_at: option.created_at,
-        updated_at: option.updated_at
+        updated_at: option.updated_at,
+        deleted_at: option.deleted_at
       }));
 
       res.json({
@@ -472,6 +486,8 @@ const createAdminAPIRouter = () => {
   router.get("/shipping-options/:id", async (req, res) => {
     const { id } = req.params;
     console.log("Get shipping option:", id);
+    console.log("Request headers:", req.headers);
+    console.log("Request query:", req.query);
     
     const client = new Client({
       connectionString: process.env.DATABASE_URL
@@ -482,9 +498,12 @@ const createAdminAPIRouter = () => {
       
       const result = await client.query(`
         SELECT so.*, 
-               r.name as region_name, 
+               r.name as region_name,
+               r.currency_code as region_currency, 
                sp.name as profile_name,
-               sp.type as profile_type
+               sp.type as profile_type,
+               sp.products as profile_products,
+               sp.shipping_options as profile_shipping_options
         FROM shipping_option so
         LEFT JOIN region r ON so.region_id = r.id
         LEFT JOIN shipping_profile sp ON so.profile_id = sp.id
@@ -497,34 +516,48 @@ const createAdminAPIRouter = () => {
 
       const option = result.rows[0];
       
-      res.json({
+      const response = {
         shipping_option: {
           id: option.id,
           name: option.name,
           region_id: option.region_id,
           region: {
             id: option.region_id,
-            name: option.region_name || 'Unknown Region'
+            name: option.region_name || 'Unknown Region',
+            currency_code: option.region_currency || 'usd'
           },
           profile_id: option.profile_id,
           profile: {
             id: option.profile_id,
             name: option.profile_name || 'Default Profile',
-            type: option.profile_type || 'default'
+            type: option.profile_type || 'default',
+            products: option.profile_products || [],
+            shipping_options: option.profile_shipping_options || []
           },
           provider_id: option.provider_id || 'manual',
+          provider: {
+            id: option.provider_id || 'manual',
+            is_installed: true
+          },
           price_type: option.price_type || 'flat_rate',
           amount: option.amount || 0,
           is_return: option.is_return || false,
+          is_default: option.is_default || false,
           admin_only: option.admin_only || false,
           includes_tax: option.includes_tax || false,
+          min_subtotal: option.min_subtotal || null,
+          max_subtotal: option.max_subtotal || null,
           requirements: option.requirements || [],
           data: option.data || {},
           metadata: option.metadata || {},
           created_at: option.created_at,
-          updated_at: option.updated_at
+          updated_at: option.updated_at,
+          deleted_at: option.deleted_at
         }
-      });
+      };
+      
+      console.log("Returning shipping option:", JSON.stringify(response, null, 2));
+      res.json(response);
 
     } catch (error) {
       console.error("Get shipping option error:", error);
