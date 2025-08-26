@@ -1,0 +1,604 @@
+{
+  "store": {
+    "currencies": ["usd"],
+    "default_currency_code": "usd",
+    "default_region": "reg_01"
+  },
+  "regions": [
+    {
+      "id": "reg_01",
+      "name": "United States",
+      "currency_code": "usd",
+      "tax_rate": 0,
+      "countries": ["us"],
+      "fulfillment_providers": ["manual"],
+      "payment_providers": ["manual", "stripe"]
+    }
+  ],
+  "shipping_options": [
+    {
+      "id": "so_01",
+      "name": "Standard Shipping",
+      "region_id": "reg_01",
+      "provider_id": "manual",
+      "profile_id": "sp_01",
+      "price_type": "flat_rate",
+      "amount": 995,
+      "data": {}
+    },
+    {
+      "id": "so_02",
+      "name": "Express Shipping",
+      "region_id": "reg_01",
+      "provider_id": "manual",
+      "profile_id": "sp_01",
+      "price_type": "flat_rate",
+      "amount": 1995,
+      "data": {}
+    },
+    {
+      "id": "so_03",
+      "name": "Free Shipping (Orders $500+)",
+      "region_id": "reg_01",
+      "provider_id": "manual",
+      "profile_id": "sp_01",
+      "price_type": "flat_rate",
+      "amount": 0,
+      "data": {},
+      "requirements": [
+        {
+          "type": "min_subtotal",
+          "amount": 50000
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_01",
+      "title": "Classic Navy Wool Suit",
+      "subtitle": "Italian Super 120s Wool, Modern Fit",
+      "description": "Crafted from premium Italian Super 120s wool, this classic navy suit epitomizes timeless elegance. The modern fit provides a contemporary silhouette while maintaining the sophisticated lines that define exceptional menswear. Perfect for business meetings, formal events, or any occasion that demands distinction.",
+      "handle": "classic-navy-wool-suit",
+      "is_giftcard": false,
+      "status": "published",
+      "type": {
+        "id": "ptyp_01",
+        "value": "Suits"
+      },
+      "collection_id": "pcol_01",
+      "tags": [
+        {
+          "id": "tag_01",
+          "value": "suits"
+        },
+        {
+          "id": "tag_02",
+          "value": "wool"
+        },
+        {
+          "id": "tag_03",
+          "value": "navy"
+        },
+        {
+          "id": "tag_04",
+          "value": "bestseller"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt_01",
+          "title": "Size"
+        },
+        {
+          "id": "opt_02",
+          "title": "Type"
+        }
+      ],
+      "variants": [
+        {
+          "id": "variant_01",
+          "title": "36S / 2-Piece",
+          "sku": "KCT-NAVY-36S-2PC",
+          "barcode": "KCT001",
+          "ean": "KCT001",
+          "inventory_quantity": 12,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "36S"
+            },
+            {
+              "option_id": "opt_02",
+              "value": "2-Piece"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 59900
+            }
+          ]
+        },
+        {
+          "id": "variant_02",
+          "title": "36S / 3-Piece",
+          "sku": "KCT-NAVY-36S-3PC",
+          "barcode": "KCT002",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "36S"
+            },
+            {
+              "option_id": "opt_02",
+              "value": "3-Piece"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 79900
+            }
+          ]
+        },
+        {
+          "id": "variant_03",
+          "title": "40R / 2-Piece",
+          "sku": "KCT-NAVY-40R-2PC",
+          "barcode": "KCT003",
+          "inventory_quantity": 25,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "40R"
+            },
+            {
+              "option_id": "opt_02",
+              "value": "2-Piece"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 59900
+            }
+          ]
+        },
+        {
+          "id": "variant_04",
+          "title": "42R / 2-Piece",
+          "sku": "KCT-NAVY-42R-2PC",
+          "barcode": "KCT004",
+          "inventory_quantity": 18,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "42R"
+            },
+            {
+              "option_id": "opt_02",
+              "value": "2-Piece"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 59900
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-suit-front/w=800,h=1000,fit=cover",
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-suit-back/w=800,h=1000,fit=cover",
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-suit-detail/w=800,h=1000,fit=cover"
+      ]
+    },
+    {
+      "id": "prod_02",
+      "title": "Charcoal Grey Business Suit",
+      "subtitle": "Premium Wool Blend, Slim Fit",
+      "description": "A sophisticated charcoal grey suit that commands respect in any boardroom. Tailored with precision using a premium wool blend, this slim-fit design offers contemporary style without compromising on comfort. The versatile charcoal color pairs effortlessly with any shirt and tie combination.",
+      "handle": "charcoal-grey-business-suit",
+      "is_giftcard": false,
+      "status": "published",
+      "type": {
+        "id": "ptyp_01",
+        "value": "Suits"
+      },
+      "collection_id": "pcol_01",
+      "tags": [
+        {
+          "id": "tag_01",
+          "value": "suits"
+        },
+        {
+          "id": "tag_02",
+          "value": "wool"
+        },
+        {
+          "id": "tag_05",
+          "value": "charcoal"
+        },
+        {
+          "id": "tag_06",
+          "value": "business"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt_01",
+          "title": "Size"
+        },
+        {
+          "id": "opt_02",
+          "title": "Type"
+        }
+      ],
+      "variants": [
+        {
+          "id": "variant_05",
+          "title": "38R / 2-Piece",
+          "sku": "KCT-CHAR-38R-2PC",
+          "barcode": "KCT005",
+          "inventory_quantity": 15,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "38R"
+            },
+            {
+              "option_id": "opt_02",
+              "value": "2-Piece"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 64900
+            }
+          ]
+        },
+        {
+          "id": "variant_06",
+          "title": "40R / 2-Piece",
+          "sku": "KCT-CHAR-40R-2PC",
+          "barcode": "KCT006",
+          "inventory_quantity": 22,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "40R"
+            },
+            {
+              "option_id": "opt_02",
+              "value": "2-Piece"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 64900
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/charcoal-suit-front/w=800,h=1000,fit=cover",
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/charcoal-suit-back/w=800,h=1000,fit=cover"
+      ]
+    },
+    {
+      "id": "prod_03",
+      "title": "Classic Black Tuxedo",
+      "subtitle": "Peak Lapel, Satin Details",
+      "description": "The epitome of formal elegance, this classic black tuxedo features a traditional peak lapel design with luxurious satin details. Perfect for weddings, galas, and black-tie events, this tuxedo ensures you'll make a distinguished impression at every formal occasion.",
+      "handle": "classic-black-tuxedo",
+      "is_giftcard": false,
+      "status": "published",
+      "type": {
+        "id": "ptyp_02",
+        "value": "Tuxedos"
+      },
+      "collection_id": "pcol_02",
+      "tags": [
+        {
+          "id": "tag_07",
+          "value": "tuxedo"
+        },
+        {
+          "id": "tag_08",
+          "value": "black"
+        },
+        {
+          "id": "tag_09",
+          "value": "formal"
+        },
+        {
+          "id": "tag_10",
+          "value": "wedding"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt_01",
+          "title": "Size"
+        }
+      ],
+      "variants": [
+        {
+          "id": "variant_07",
+          "title": "38R",
+          "sku": "KCT-TUX-BLK-38R",
+          "barcode": "KCT007",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "38R"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 89900
+            }
+          ]
+        },
+        {
+          "id": "variant_08",
+          "title": "40R",
+          "sku": "KCT-TUX-BLK-40R",
+          "barcode": "KCT008",
+          "inventory_quantity": 12,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_01",
+              "value": "40R"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 89900
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/black-tuxedo-front/w=800,h=1000,fit=cover",
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/black-tuxedo-detail/w=800,h=1000,fit=cover"
+      ]
+    },
+    {
+      "id": "prod_04",
+      "title": "Premium White Dress Shirt",
+      "subtitle": "Egyptian Cotton, French Cuffs",
+      "description": "Crafted from the finest Egyptian cotton, this premium white dress shirt features French cuffs and a classic spread collar. The superior fabric provides exceptional comfort and breathability, while the timeless design ensures versatility with any suit or tuxedo.",
+      "handle": "premium-white-dress-shirt",
+      "is_giftcard": false,
+      "status": "published",
+      "type": {
+        "id": "ptyp_03",
+        "value": "Shirts"
+      },
+      "collection_id": "pcol_03",
+      "tags": [
+        {
+          "id": "tag_11",
+          "value": "shirt"
+        },
+        {
+          "id": "tag_12",
+          "value": "cotton"
+        },
+        {
+          "id": "tag_13",
+          "value": "white"
+        },
+        {
+          "id": "tag_14",
+          "value": "french-cuffs"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt_03",
+          "title": "Collar Size"
+        },
+        {
+          "id": "opt_04",
+          "title": "Sleeve Length"
+        }
+      ],
+      "variants": [
+        {
+          "id": "variant_09",
+          "title": "15.5 / 32-33",
+          "sku": "KCT-SHT-WHT-15532",
+          "barcode": "KCT009",
+          "inventory_quantity": 35,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_03",
+              "value": "15.5"
+            },
+            {
+              "option_id": "opt_04",
+              "value": "32-33"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 12900
+            }
+          ]
+        },
+        {
+          "id": "variant_10",
+          "title": "16 / 34-35",
+          "sku": "KCT-SHT-WHT-16034",
+          "barcode": "KCT010",
+          "inventory_quantity": 28,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_03",
+              "value": "16"
+            },
+            {
+              "option_id": "opt_04",
+              "value": "34-35"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 12900
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/white-shirt-front/w=800,h=1000,fit=cover",
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/white-shirt-detail/w=800,h=1000,fit=cover"
+      ]
+    },
+    {
+      "id": "prod_05",
+      "title": "Silk Navy Tie",
+      "subtitle": "100% Italian Silk, Classic Width",
+      "description": "This elegant navy silk tie is crafted from 100% Italian silk with a classic 3.5-inch width. The rich navy color and subtle texture make it the perfect complement to both business and formal attire. A timeless accessory that elevates any ensemble.",
+      "handle": "silk-navy-tie",
+      "is_giftcard": false,
+      "status": "published",
+      "type": {
+        "id": "ptyp_04",
+        "value": "Accessories"
+      },
+      "collection_id": "pcol_04",
+      "tags": [
+        {
+          "id": "tag_15",
+          "value": "tie"
+        },
+        {
+          "id": "tag_16",
+          "value": "silk"
+        },
+        {
+          "id": "tag_03",
+          "value": "navy"
+        },
+        {
+          "id": "tag_17",
+          "value": "accessories"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt_05",
+          "title": "Style"
+        }
+      ],
+      "variants": [
+        {
+          "id": "variant_11",
+          "title": "Classic",
+          "sku": "KCT-TIE-NAV-CLS",
+          "barcode": "KCT011",
+          "inventory_quantity": 45,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            {
+              "option_id": "opt_05",
+              "value": "Classic"
+            }
+          ],
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 5900
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-tie/w=400,h=600,fit=cover"
+      ]
+    }
+  ],
+  "product_types": [
+    {
+      "id": "ptyp_01",
+      "value": "Suits"
+    },
+    {
+      "id": "ptyp_02",
+      "value": "Tuxedos"
+    },
+    {
+      "id": "ptyp_03",
+      "value": "Shirts"
+    },
+    {
+      "id": "ptyp_04",
+      "value": "Accessories"
+    }
+  ],
+  "product_collections": [
+    {
+      "id": "pcol_01",
+      "title": "Business Suits",
+      "handle": "business-suits"
+    },
+    {
+      "id": "pcol_02",
+      "title": "Formal Tuxedos",
+      "handle": "formal-tuxedos"
+    },
+    {
+      "id": "pcol_03",
+      "title": "Dress Shirts",
+      "handle": "dress-shirts"
+    },
+    {
+      "id": "pcol_04",
+      "title": "Accessories",
+      "handle": "accessories"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_01",
+      "email": "admin@kctmenswear.com",
+      "first_name": "Admin",
+      "last_name": "User",
+      "role": "admin",
+      "password": "supersecret"
+    }
+  ]
+}

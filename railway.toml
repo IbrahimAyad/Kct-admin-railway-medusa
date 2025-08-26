@@ -1,0 +1,82 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[environments.production]
+ROOT = "/"
+PORT = 9000
+NODE_ENV = "production"
+
+# Medusa Configuration
+JWT_SECRET = "${{ JWT_SECRET }}"
+COOKIE_SECRET = "${{ COOKIE_SECRET }}"
+SESSION_SECRET = "${{ SESSION_SECRET }}"
+
+# Database Configuration (Railway PostgreSQL)
+DATABASE_TYPE = "postgres"
+DATABASE_URL = "${{ DATABASE_URL }}"
+
+# Redis Configuration (Railway Redis)
+REDIS_URL = "${{ REDIS_URL }}"
+
+# CORS Configuration
+STORE_CORS = "${{ STORE_CORS }}"
+ADMIN_CORS = "${{ ADMIN_CORS }}"
+
+# Stripe Configuration
+STRIPE_API_KEY = "${{ STRIPE_API_KEY }}"
+STRIPE_WEBHOOK_SECRET = "${{ STRIPE_WEBHOOK_SECRET }}"
+
+# Cloudflare Configuration
+CLOUDFLARE_ACCOUNT_ID = "${{ CLOUDFLARE_ACCOUNT_ID }}"
+CLOUDFLARE_IMAGES_TOKEN = "${{ CLOUDFLARE_IMAGES_TOKEN }}"
+CLOUDFLARE_R2_TOKEN = "${{ CLOUDFLARE_R2_TOKEN }}"
+CLOUDFLARE_CDN_URL = "${{ CLOUDFLARE_CDN_URL }}"
+CLOUDFLARE_IMAGE_DELIVERY_URL = "${{ CLOUDFLARE_IMAGE_DELIVERY_URL }}"
+CLOUDFLARE_VIDEO_STREAM_URL = "${{ CLOUDFLARE_VIDEO_STREAM_URL }}"
+
+# Facebook Business Integration
+FACEBOOK_APP_ID = "${{ FACEBOOK_APP_ID }}"
+FACEBOOK_APP_SECRET = "${{ FACEBOOK_APP_SECRET }}"
+FACEBOOK_BUSINESS_PORTFOLIO_ID = "${{ FACEBOOK_BUSINESS_PORTFOLIO_ID }}"
+FACEBOOK_AD_ACCOUNT_ID = "${{ FACEBOOK_AD_ACCOUNT_ID }}"
+FACEBOOK_CLIENT_TOKEN = "${{ FACEBOOK_CLIENT_TOKEN }}"
+FACEBOOK_DATASET_ID = "${{ FACEBOOK_DATASET_ID }}"
+FACEBOOK_PIXEL_ID = "${{ FACEBOOK_PIXEL_ID }}"
+FACEBOOK_API_VERSION = "${{ FACEBOOK_API_VERSION }}"
+
+# Google Analytics Configuration
+GOOGLE_CLIENT_ID = "${{ GOOGLE_CLIENT_ID }}"
+GOOGLE_CLIENT_SECRET = "${{ GOOGLE_CLIENT_SECRET }}"
+GOOGLE_PROJECT_ID = "${{ GOOGLE_PROJECT_ID }}"
+GOOGLE_PROJECT_NUMBER = "${{ GOOGLE_PROJECT_NUMBER }}"
+GA4_MEASUREMENT_ID = "${{ GA4_MEASUREMENT_ID }}"
+
+# Email Configuration
+RESEND_API_KEY = "${{ RESEND_API_KEY }}"
+SMTP_HOST = "${{ SMTP_HOST }}"
+SMTP_PORT = "${{ SMTP_PORT }}"
+SMTP_USER = "${{ SMTP_USER }}"
+SMTP_PASSWORD = "${{ SMTP_PASSWORD }}"
+
+# Worker Mode
+WORKER_MODE = "shared"
+
+[experimental]
+incremental_cache_build_on_change = false
+
+[[services]]
+name = "kct-medusa-backend"
+type = "web"
+
+[[services.volumes]]
+mount_path = "/app/backend/uploads"
+name = "uploads"
+size_gb = 10
