@@ -293,10 +293,14 @@ const createAdminAPIRouter = () => {
       
       const storeResult = await client.query(`
         SELECT s.*, 
-               array_agg(sc.currency_code) as currencies
+               c.symbol as currency_symbol,
+               c.symbol_native as currency_symbol_native,
+               c.name as currency_name,
+               array_agg(DISTINCT sc.currency_code) as currency_codes
         FROM store s
+        LEFT JOIN currency c ON s.default_currency_code = c.code
         LEFT JOIN store_currencies sc ON s.id = sc.store_id
-        GROUP BY s.id
+        GROUP BY s.id, c.symbol, c.symbol_native, c.name
         LIMIT 1
       `);
 
@@ -306,17 +310,43 @@ const createAdminAPIRouter = () => {
 
       const store = storeResult.rows[0];
       
+      // Get all currencies for this store
+      const currenciesResult = await client.query(`
+        SELECT c.* 
+        FROM currency c
+        INNER JOIN store_currencies sc ON c.code = sc.currency_code
+        WHERE sc.store_id = $1
+      `, [store.id]);
+      
+      const currencies = currenciesResult.rows.map(curr => ({
+        code: curr.code,
+        symbol: curr.symbol,
+        symbol_native: curr.symbol_native,
+        name: curr.name
+      }));
+      
       res.json({
         store: {
           id: store.id,
           name: store.name,
           default_currency_code: store.default_currency_code,
-          currencies: store.currencies || ['usd'],
-          swap_link_template: store.swap_link_template,
-          payment_link_template: store.payment_link_template,
-          invite_link_template: store.invite_link_template,
-          default_sales_channel_id: store.default_sales_channel_id,
-          default_location_id: store.default_location_id,
+          default_currency: {
+            code: store.default_currency_code,
+            symbol: store.currency_symbol || '$',
+            symbol_native: store.currency_symbol_native || '$',
+            name: store.currency_name || 'US Dollar'
+          },
+          currencies: currencies.length > 0 ? currencies : [{
+            code: 'usd',
+            symbol: '$',
+            symbol_native: '$',
+            name: 'US Dollar'
+          }],
+          swap_link_template: store.swap_link_template || null,
+          payment_link_template: store.payment_link_template || null,
+          invite_link_template: store.invite_link_template || null,
+          default_sales_channel_id: store.default_sales_channel_id || null,
+          default_location_id: store.default_location_id || null,
           metadata: store.metadata || {},
           created_at: store.created_at,
           updated_at: store.updated_at
@@ -421,9 +451,19 @@ const createAdminAPIRouter = () => {
         SELECT * FROM currency ORDER BY code
       `);
 
+      const currencies = currenciesResult.rows.map(curr => ({
+        code: curr.code || 'usd',
+        symbol: curr.symbol || '$',
+        symbol_native: curr.symbol_native || '$',
+        name: curr.name || 'US Dollar',
+        includes_tax: false
+      }));
+
       res.json({
-        currencies: currenciesResult.rows,
-        count: currenciesResult.rows.length
+        currencies: currencies,
+        count: currencies.length,
+        offset: 0,
+        limit: 100
       });
 
     } catch (error) {
