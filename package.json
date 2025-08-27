@@ -10,7 +10,7 @@
     "build:admin": "medusa-admin build || echo 'Admin build failed but continuing'",
     "watch": "cross-env tsc --watch",
     "test": "cross-env jest",
-    "seed": "cross-env medusa seed -f ./data/seed.json",
+    "seed": "medusa seed -f ./data/seed.json",
     "start": "npm run migrate && npm run seed && node index-fixed-v2.js",
     "debug": "node -e \"console.log('Port test works!')\"",
     "start:medusa": "medusa migrations run && medusa start",
