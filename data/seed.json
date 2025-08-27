@@ -53,552 +53,811 @@
       ]
     }
   ],
-  "products": [
-    {
-      "id": "prod_01",
-      "title": "Classic Navy Wool Suit",
-      "subtitle": "Italian Super 120s Wool, Modern Fit",
-      "description": "Crafted from premium Italian Super 120s wool, this classic navy suit epitomizes timeless elegance. The modern fit provides a contemporary silhouette while maintaining the sophisticated lines that define exceptional menswear. Perfect for business meetings, formal events, or any occasion that demands distinction.",
-      "handle": "classic-navy-wool-suit",
-      "is_giftcard": false,
-      "status": "published",
-      "type": {
-        "id": "ptyp_01",
-        "value": "Suits"
-      },
-      "collection_id": "pcol_01",
-      "tags": [
-        {
-          "id": "tag_01",
-          "value": "suits"
-        },
-        {
-          "id": "tag_02",
-          "value": "wool"
-        },
-        {
-          "id": "tag_03",
-          "value": "navy"
-        },
-        {
-          "id": "tag_04",
-          "value": "bestseller"
-        }
-      ],
-      "options": [
-        {
-          "id": "opt_01",
-          "title": "Size"
-        },
-        {
-          "id": "opt_02",
-          "title": "Type"
-        }
-      ],
-      "variants": [
-        {
-          "id": "variant_01",
-          "title": "36S / 2-Piece",
-          "sku": "KCT-NAVY-36S-2PC",
-          "barcode": "KCT001",
-          "ean": "KCT001",
-          "inventory_quantity": 12,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "36S"
-            },
-            {
-              "option_id": "opt_02",
-              "value": "2-Piece"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 59900
-            }
-          ]
-        },
-        {
-          "id": "variant_02",
-          "title": "36S / 3-Piece",
-          "sku": "KCT-NAVY-36S-3PC",
-          "barcode": "KCT002",
-          "inventory_quantity": 8,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "36S"
-            },
-            {
-              "option_id": "opt_02",
-              "value": "3-Piece"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 79900
-            }
-          ]
-        },
-        {
-          "id": "variant_03",
-          "title": "40R / 2-Piece",
-          "sku": "KCT-NAVY-40R-2PC",
-          "barcode": "KCT003",
-          "inventory_quantity": 25,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "40R"
-            },
-            {
-              "option_id": "opt_02",
-              "value": "2-Piece"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 59900
-            }
-          ]
-        },
-        {
-          "id": "variant_04",
-          "title": "42R / 2-Piece",
-          "sku": "KCT-NAVY-42R-2PC",
-          "barcode": "KCT004",
-          "inventory_quantity": 18,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "42R"
-            },
-            {
-              "option_id": "opt_02",
-              "value": "2-Piece"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 59900
-            }
-          ]
-        }
-      ],
-      "images": [
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-suit-front/w=800,h=1000,fit=cover",
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-suit-back/w=800,h=1000,fit=cover",
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-suit-detail/w=800,h=1000,fit=cover"
-      ]
-    },
-    {
-      "id": "prod_02",
-      "title": "Charcoal Grey Business Suit",
-      "subtitle": "Premium Wool Blend, Slim Fit",
-      "description": "A sophisticated charcoal grey suit that commands respect in any boardroom. Tailored with precision using a premium wool blend, this slim-fit design offers contemporary style without compromising on comfort. The versatile charcoal color pairs effortlessly with any shirt and tie combination.",
-      "handle": "charcoal-grey-business-suit",
-      "is_giftcard": false,
-      "status": "published",
-      "type": {
-        "id": "ptyp_01",
-        "value": "Suits"
-      },
-      "collection_id": "pcol_01",
-      "tags": [
-        {
-          "id": "tag_01",
-          "value": "suits"
-        },
-        {
-          "id": "tag_02",
-          "value": "wool"
-        },
-        {
-          "id": "tag_05",
-          "value": "charcoal"
-        },
-        {
-          "id": "tag_06",
-          "value": "business"
-        }
-      ],
-      "options": [
-        {
-          "id": "opt_01",
-          "title": "Size"
-        },
-        {
-          "id": "opt_02",
-          "title": "Type"
-        }
-      ],
-      "variants": [
-        {
-          "id": "variant_05",
-          "title": "38R / 2-Piece",
-          "sku": "KCT-CHAR-38R-2PC",
-          "barcode": "KCT005",
-          "inventory_quantity": 15,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "38R"
-            },
-            {
-              "option_id": "opt_02",
-              "value": "2-Piece"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 64900
-            }
-          ]
-        },
-        {
-          "id": "variant_06",
-          "title": "40R / 2-Piece",
-          "sku": "KCT-CHAR-40R-2PC",
-          "barcode": "KCT006",
-          "inventory_quantity": 22,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "40R"
-            },
-            {
-              "option_id": "opt_02",
-              "value": "2-Piece"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 64900
-            }
-          ]
-        }
-      ],
-      "images": [
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/charcoal-suit-front/w=800,h=1000,fit=cover",
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/charcoal-suit-back/w=800,h=1000,fit=cover"
-      ]
-    },
-    {
-      "id": "prod_03",
-      "title": "Classic Black Tuxedo",
-      "subtitle": "Peak Lapel, Satin Details",
-      "description": "The epitome of formal elegance, this classic black tuxedo features a traditional peak lapel design with luxurious satin details. Perfect for weddings, galas, and black-tie events, this tuxedo ensures you'll make a distinguished impression at every formal occasion.",
-      "handle": "classic-black-tuxedo",
-      "is_giftcard": false,
-      "status": "published",
-      "type": {
-        "id": "ptyp_02",
-        "value": "Tuxedos"
-      },
-      "collection_id": "pcol_02",
-      "tags": [
-        {
-          "id": "tag_07",
-          "value": "tuxedo"
-        },
-        {
-          "id": "tag_08",
-          "value": "black"
-        },
-        {
-          "id": "tag_09",
-          "value": "formal"
-        },
-        {
-          "id": "tag_10",
-          "value": "wedding"
-        }
-      ],
-      "options": [
-        {
-          "id": "opt_01",
-          "title": "Size"
-        }
-      ],
-      "variants": [
-        {
-          "id": "variant_07",
-          "title": "38R",
-          "sku": "KCT-TUX-BLK-38R",
-          "barcode": "KCT007",
-          "inventory_quantity": 8,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "38R"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 89900
-            }
-          ]
-        },
-        {
-          "id": "variant_08",
-          "title": "40R",
-          "sku": "KCT-TUX-BLK-40R",
-          "barcode": "KCT008",
-          "inventory_quantity": 12,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_01",
-              "value": "40R"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 89900
-            }
-          ]
-        }
-      ],
-      "images": [
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/black-tuxedo-front/w=800,h=1000,fit=cover",
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/black-tuxedo-detail/w=800,h=1000,fit=cover"
-      ]
-    },
-    {
-      "id": "prod_04",
-      "title": "Premium White Dress Shirt",
-      "subtitle": "Egyptian Cotton, French Cuffs",
-      "description": "Crafted from the finest Egyptian cotton, this premium white dress shirt features French cuffs and a classic spread collar. The superior fabric provides exceptional comfort and breathability, while the timeless design ensures versatility with any suit or tuxedo.",
-      "handle": "premium-white-dress-shirt",
-      "is_giftcard": false,
-      "status": "published",
-      "type": {
-        "id": "ptyp_03",
-        "value": "Shirts"
-      },
-      "collection_id": "pcol_03",
-      "tags": [
-        {
-          "id": "tag_11",
-          "value": "shirt"
-        },
-        {
-          "id": "tag_12",
-          "value": "cotton"
-        },
-        {
-          "id": "tag_13",
-          "value": "white"
-        },
-        {
-          "id": "tag_14",
-          "value": "french-cuffs"
-        }
-      ],
-      "options": [
-        {
-          "id": "opt_03",
-          "title": "Collar Size"
-        },
-        {
-          "id": "opt_04",
-          "title": "Sleeve Length"
-        }
-      ],
-      "variants": [
-        {
-          "id": "variant_09",
-          "title": "15.5 / 32-33",
-          "sku": "KCT-SHT-WHT-15532",
-          "barcode": "KCT009",
-          "inventory_quantity": 35,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_03",
-              "value": "15.5"
-            },
-            {
-              "option_id": "opt_04",
-              "value": "32-33"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 12900
-            }
-          ]
-        },
-        {
-          "id": "variant_10",
-          "title": "16 / 34-35",
-          "sku": "KCT-SHT-WHT-16034",
-          "barcode": "KCT010",
-          "inventory_quantity": 28,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_03",
-              "value": "16"
-            },
-            {
-              "option_id": "opt_04",
-              "value": "34-35"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 12900
-            }
-          ]
-        }
-      ],
-      "images": [
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/white-shirt-front/w=800,h=1000,fit=cover",
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/white-shirt-detail/w=800,h=1000,fit=cover"
-      ]
-    },
-    {
-      "id": "prod_05",
-      "title": "Silk Navy Tie",
-      "subtitle": "100% Italian Silk, Classic Width",
-      "description": "This elegant navy silk tie is crafted from 100% Italian silk with a classic 3.5-inch width. The rich navy color and subtle texture make it the perfect complement to both business and formal attire. A timeless accessory that elevates any ensemble.",
-      "handle": "silk-navy-tie",
-      "is_giftcard": false,
-      "status": "published",
-      "type": {
-        "id": "ptyp_04",
-        "value": "Accessories"
-      },
-      "collection_id": "pcol_04",
-      "tags": [
-        {
-          "id": "tag_15",
-          "value": "tie"
-        },
-        {
-          "id": "tag_16",
-          "value": "silk"
-        },
-        {
-          "id": "tag_03",
-          "value": "navy"
-        },
-        {
-          "id": "tag_17",
-          "value": "accessories"
-        }
-      ],
-      "options": [
-        {
-          "id": "opt_05",
-          "title": "Style"
-        }
-      ],
-      "variants": [
-        {
-          "id": "variant_11",
-          "title": "Classic",
-          "sku": "KCT-TIE-NAV-CLS",
-          "barcode": "KCT011",
-          "inventory_quantity": 45,
-          "manage_inventory": true,
-          "allow_backorder": false,
-          "options": [
-            {
-              "option_id": "opt_05",
-              "value": "Classic"
-            }
-          ],
-          "prices": [
-            {
-              "currency_code": "usd",
-              "amount": 5900
-            }
-          ]
-        }
-      ],
-      "images": [
-        "https://imagedelivery.net/QI-O2U_ayTU_H_Ilcb4c6Q/navy-tie/w=400,h=600,fit=cover"
-      ]
-    }
-  ],
-  "product_types": [
-    {
-      "id": "ptyp_01",
-      "value": "Suits"
-    },
-    {
-      "id": "ptyp_02",
-      "value": "Tuxedos"
-    },
-    {
-      "id": "ptyp_03",
-      "value": "Shirts"
-    },
-    {
-      "id": "ptyp_04",
-      "value": "Accessories"
-    }
-  ],
-  "product_collections": [
-    {
-      "id": "pcol_01",
-      "title": "Business Suits",
-      "handle": "business-suits"
-    },
-    {
-      "id": "pcol_02",
-      "title": "Formal Tuxedos",
-      "handle": "formal-tuxedos"
-    },
-    {
-      "id": "pcol_03",
-      "title": "Dress Shirts",
-      "handle": "dress-shirts"
-    },
-    {
-      "id": "pcol_04",
-      "title": "Accessories",
-      "handle": "accessories"
-    }
-  ],
   "users": [
     {
-      "id": "usr_01",
+      "id": "usr_admin_01",
       "email": "admin@kctmenswear.com",
       "first_name": "Admin",
       "last_name": "User",
       "role": "admin",
       "password": "supersecret"
+    }
+  ],
+  "product_categories": [
+    {
+      "id": "pcat_suits",
+      "name": "Suits",
+      "description": "Complete suit collections including jackets and trousers in various fits and sizes",
+      "handle": "suits",
+      "is_active": true,
+      "is_internal": false
+    },
+    {
+      "id": "pcat_dress_shirts",
+      "name": "Dress Shirts",
+      "description": "Professional dress shirts in Slim Fit and Classic Fit with updated sizing",
+      "handle": "dress-shirts",
+      "is_active": true,
+      "is_internal": false
+    },
+    {
+      "id": "pcat_ties",
+      "name": "Ties",
+      "description": "Silk neckties and bow ties for professional and formal occasions",
+      "handle": "ties",
+      "is_active": true,
+      "is_internal": false
+    },
+    {
+      "id": "pcat_accessories",
+      "name": "Accessories",
+      "description": "Cufflinks, pocket squares, belts, and other menswear accessories",
+      "handle": "accessories",
+      "is_active": true,
+      "is_internal": false
+    },
+    {
+      "id": "pcat_formal_shoes",
+      "name": "Formal Shoes",
+      "description": "Oxford, Derby, and other formal footwear for business and formal events",
+      "handle": "formal-shoes",
+      "is_active": true,
+      "is_internal": false
+    }
+  ],
+  "product_collections": [
+    {
+      "id": "pcol_wedding",
+      "title": "Wedding Attire",
+      "handle": "wedding-attire",
+      "metadata": {
+        "description": "Complete wedding collection featuring suits, shirts, ties, and accessories for the perfect wedding look"
+      }
+    },
+    {
+      "id": "pcol_business_formal",
+      "title": "Business Formal",
+      "handle": "business-formal",
+      "metadata": {
+        "description": "Professional business attire collection with suits and accessories for executive style"
+      }
+    },
+    {
+      "id": "pcol_executive",
+      "title": "Executive Collection",
+      "handle": "executive-collection",
+      "metadata": {
+        "description": "Premium executive menswear collection featuring high-end suits and accessories"
+      }
+    },
+    {
+      "id": "pcol_seasonal",
+      "title": "Seasonal Styles",
+      "handle": "seasonal-styles",
+      "metadata": {
+        "description": "Seasonal menswear collection with contemporary styles and colors"
+      }
+    },
+    {
+      "id": "pcol_classic",
+      "title": "Classic Essentials",
+      "handle": "classic-essentials",
+      "metadata": {
+        "description": "Timeless classic menswear essentials that never go out of style"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_executive_navy_suit",
+      "title": "Executive Navy Suit",
+      "subtitle": "Premium 2-piece and 3-piece suit with comprehensive sizing",
+      "description": "Premium executive navy suit crafted from high-quality wool blend. Available in 2-piece (jacket and trousers) and 3-piece (jacket, vest, and trousers) configurations. Features modern tailoring with classic styling, perfect for business meetings, formal events, and professional occasions.",
+      "handle": "executive-navy-suit",
+      "is_giftcard": false,
+      "status": "published",
+      "category_id": "pcat_suits",
+      "collection_id": "pcol_executive",
+      "tags": [
+        { "id": "tag_suits", "value": "suits" },
+        { "id": "tag_navy", "value": "navy" },
+        { "id": "tag_executive", "value": "executive" },
+        { "id": "tag_premium", "value": "premium" }
+      ],
+      "options": [
+        { "id": "opt_size", "title": "Size" },
+        { "id": "opt_color", "title": "Color" },
+        { "id": "opt_style", "title": "Style" }
+      ],
+      "variants": [
+        {
+          "id": "variant_navy_38s_2pc",
+          "title": "38S / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-38S-2PC",
+          "inventory_quantity": 5,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "38S" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_40s_2pc",
+          "title": "40S / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-40S-2PC",
+          "inventory_quantity": 5,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "40S" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_42s_2pc",
+          "title": "42S / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-42S-2PC",
+          "inventory_quantity": 5,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "42S" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_44s_2pc",
+          "title": "44S / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-44S-2PC",
+          "inventory_quantity": 5,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "44S" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_38r_2pc",
+          "title": "38R / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-38R-2PC",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "38R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_40r_2pc",
+          "title": "40R / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-40R-2PC",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "40R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_42r_2pc",
+          "title": "42R / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-42R-2PC",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "42R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_44r_2pc",
+          "title": "44R / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-44R-2PC",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "44R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_46r_2pc",
+          "title": "46R / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-46R-2PC",
+          "inventory_quantity": 6,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "46R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_40l_2pc",
+          "title": "40L / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-40L-2PC",
+          "inventory_quantity": 4,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "40L" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_42l_2pc",
+          "title": "42L / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-42L-2PC",
+          "inventory_quantity": 4,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "42L" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_44l_2pc",
+          "title": "44L / Navy / 2-Piece",
+          "sku": "EXEC-NAVY-44L-2PC",
+          "inventory_quantity": 4,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "44L" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "2-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 29999 }
+          ]
+        },
+        {
+          "id": "variant_navy_38s_3pc",
+          "title": "38S / Navy / 3-Piece",
+          "sku": "EXEC-NAVY-38S-3PC",
+          "inventory_quantity": 3,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "38S" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "3-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 31999 }
+          ]
+        },
+        {
+          "id": "variant_navy_40r_3pc",
+          "title": "40R / Navy / 3-Piece",
+          "sku": "EXEC-NAVY-40R-3PC",
+          "inventory_quantity": 5,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "40R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "3-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 31999 }
+          ]
+        },
+        {
+          "id": "variant_navy_42r_3pc",
+          "title": "42R / Navy / 3-Piece",
+          "sku": "EXEC-NAVY-42R-3PC",
+          "inventory_quantity": 5,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "42R" },
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_style", "value": "3-Piece" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 31999 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod_charcoal_business_suit",
+      "title": "Charcoal Business Suit",
+      "subtitle": "Modern slim-fit business suit in classic charcoal",
+      "description": "Professional charcoal business suit with modern slim-fit tailoring. Perfect for business meetings and formal occasions. Features contemporary styling with classic color that pairs well with any dress shirt.",
+      "handle": "charcoal-business-suit",
+      "is_giftcard": false,
+      "status": "published",
+      "category_id": "pcat_suits",
+      "collection_id": "pcol_business_formal",
+      "tags": [
+        { "id": "tag_suits", "value": "suits" },
+        { "id": "tag_charcoal", "value": "charcoal" },
+        { "id": "tag_business", "value": "business" },
+        { "id": "tag_slim_fit", "value": "slim-fit" }
+      ],
+      "options": [
+        { "id": "opt_size", "title": "Size" },
+        { "id": "opt_color", "title": "Color" },
+        { "id": "opt_fit", "title": "Fit" }
+      ],
+      "variants": [
+        {
+          "id": "variant_charcoal_40r_slim",
+          "title": "40R / Charcoal / Slim Fit",
+          "sku": "CHAR-BUS-40R-SLIM",
+          "inventory_quantity": 6,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "40R" },
+            { "option_id": "opt_color", "value": "Charcoal" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 24999 }
+          ]
+        },
+        {
+          "id": "variant_charcoal_42r_slim",
+          "title": "42R / Charcoal / Slim Fit",
+          "sku": "CHAR-BUS-42R-SLIM",
+          "inventory_quantity": 6,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "42R" },
+            { "option_id": "opt_color", "value": "Charcoal" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 24999 }
+          ]
+        },
+        {
+          "id": "variant_charcoal_44r_slim",
+          "title": "44R / Charcoal / Slim Fit",
+          "sku": "CHAR-BUS-44R-SLIM",
+          "inventory_quantity": 4,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "44R" },
+            { "option_id": "opt_color", "value": "Charcoal" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 24999 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod_slim_fit_dress_shirt",
+      "title": "Classic White Dress Shirt - Slim Fit",
+      "subtitle": "Modern tailored fit dress shirt in classic white",
+      "description": "Classic white dress shirt with modern slim-fit tailoring. Features spread collar, button cuffs, and premium cotton construction. Perfect for business and formal occasions.",
+      "handle": "classic-white-dress-shirt-slim-fit",
+      "is_giftcard": false,
+      "status": "published",
+      "category_id": "pcat_dress_shirts",
+      "collection_id": "pcol_classic",
+      "tags": [
+        { "id": "tag_dress_shirts", "value": "dress-shirts" },
+        { "id": "tag_white", "value": "white" },
+        { "id": "tag_slim_fit", "value": "slim-fit" },
+        { "id": "tag_classic", "value": "classic" }
+      ],
+      "options": [
+        { "id": "opt_size", "title": "Size" },
+        { "id": "opt_color", "title": "Color" },
+        { "id": "opt_fit", "title": "Fit" }
+      ],
+      "variants": [
+        {
+          "id": "variant_white_s_slim",
+          "title": "S (15\") / White / Slim Fit",
+          "sku": "WHITE-DRESS-S-SLIM",
+          "inventory_quantity": 10,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "S (15\")" },
+            { "option_id": "opt_color", "value": "White" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 7999 }
+          ]
+        },
+        {
+          "id": "variant_white_m_slim",
+          "title": "M (15.5\") / White / Slim Fit",
+          "sku": "WHITE-DRESS-M-SLIM",
+          "inventory_quantity": 12,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "M (15.5\")" },
+            { "option_id": "opt_color", "value": "White" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 7999 }
+          ]
+        },
+        {
+          "id": "variant_white_l_slim",
+          "title": "L (16\") / White / Slim Fit",
+          "sku": "WHITE-DRESS-L-SLIM",
+          "inventory_quantity": 15,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "L (16\")" },
+            { "option_id": "opt_color", "value": "White" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 7999 }
+          ]
+        },
+        {
+          "id": "variant_white_xl_slim",
+          "title": "XL (16.5\") / White / Slim Fit",
+          "sku": "WHITE-DRESS-XL-SLIM",
+          "inventory_quantity": 12,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "XL (16.5\")" },
+            { "option_id": "opt_color", "value": "White" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 7999 }
+          ]
+        },
+        {
+          "id": "variant_white_xxl_slim",
+          "title": "XXL (17\") / White / Slim Fit",
+          "sku": "WHITE-DRESS-XXL-SLIM",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_size", "value": "XXL (17\")" },
+            { "option_id": "opt_color", "value": "White" },
+            { "option_id": "opt_fit", "value": "Slim Fit" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 7999 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod_classic_fit_dress_shirt",
+      "title": "Light Blue Dress Shirt - Classic Fit",
+      "subtitle": "Traditional relaxed fit dress shirt in light blue",
+      "description": "Light blue dress shirt with traditional classic fit. Features point collar, button cuffs, and premium cotton construction. Available in multiple neck and sleeve length combinations for the perfect fit.",
+      "handle": "light-blue-dress-shirt-classic-fit",
+      "is_giftcard": false,
+      "status": "published",
+      "category_id": "pcat_dress_shirts",
+      "collection_id": "pcol_business_formal",
+      "tags": [
+        { "id": "tag_dress_shirts", "value": "dress-shirts" },
+        { "id": "tag_light_blue", "value": "light-blue" },
+        { "id": "tag_classic_fit", "value": "classic-fit" },
+        { "id": "tag_professional", "value": "professional" }
+      ],
+      "options": [
+        { "id": "opt_neck_size", "title": "Neck Size" },
+        { "id": "opt_sleeve_length", "title": "Sleeve Length" },
+        { "id": "opt_color", "title": "Color" }
+      ],
+      "variants": [
+        {
+          "id": "variant_lb_15_3435",
+          "title": "15\" / 34-35 / Light Blue",
+          "sku": "LB-DRESS-15-3435",
+          "inventory_quantity": 6,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_neck_size", "value": "15\"" },
+            { "option_id": "opt_sleeve_length", "value": "34-35" },
+            { "option_id": "opt_color", "value": "Light Blue" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 8999 }
+          ]
+        },
+        {
+          "id": "variant_lb_155_3435",
+          "title": "15.5\" / 34-35 / Light Blue",
+          "sku": "LB-DRESS-155-3435",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_neck_size", "value": "15.5\"" },
+            { "option_id": "opt_sleeve_length", "value": "34-35" },
+            { "option_id": "opt_color", "value": "Light Blue" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 8999 }
+          ]
+        },
+        {
+          "id": "variant_lb_16_3435",
+          "title": "16\" / 34-35 / Light Blue",
+          "sku": "LB-DRESS-16-3435",
+          "inventory_quantity": 10,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_neck_size", "value": "16\"" },
+            { "option_id": "opt_sleeve_length", "value": "34-35" },
+            { "option_id": "opt_color", "value": "Light Blue" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 8999 }
+          ]
+        },
+        {
+          "id": "variant_lb_165_3435",
+          "title": "16.5\" / 34-35 / Light Blue",
+          "sku": "LB-DRESS-165-3435",
+          "inventory_quantity": 10,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_neck_size", "value": "16.5\"" },
+            { "option_id": "opt_sleeve_length", "value": "34-35" },
+            { "option_id": "opt_color", "value": "Light Blue" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 8999 }
+          ]
+        },
+        {
+          "id": "variant_lb_17_3435",
+          "title": "17\" / 34-35 / Light Blue",
+          "sku": "LB-DRESS-17-3435",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_neck_size", "value": "17\"" },
+            { "option_id": "opt_sleeve_length", "value": "34-35" },
+            { "option_id": "opt_color", "value": "Light Blue" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 8999 }
+          ]
+        },
+        {
+          "id": "variant_lb_175_3435",
+          "title": "17.5\" / 34-35 / Light Blue",
+          "sku": "LB-DRESS-175-3435",
+          "inventory_quantity": 6,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_neck_size", "value": "17.5\"" },
+            { "option_id": "opt_sleeve_length", "value": "34-35" },
+            { "option_id": "opt_color", "value": "Light Blue" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 8999 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod_business_tie_collection",
+      "title": "Silk Business Tie Collection",
+      "subtitle": "Premium silk neckties for professional occasions",
+      "description": "Premium collection of silk business ties in classic patterns and colors. Perfect for professional settings and formal events. Features high-quality silk construction with traditional 3.25\" width.",
+      "handle": "silk-business-tie-collection",
+      "is_giftcard": false,
+      "status": "published",
+      "category_id": "pcat_ties",
+      "collection_id": "pcol_business_formal",
+      "tags": [
+        { "id": "tag_ties", "value": "ties" },
+        { "id": "tag_silk", "value": "silk" },
+        { "id": "tag_business", "value": "business" },
+        { "id": "tag_professional", "value": "professional" }
+      ],
+      "options": [
+        { "id": "opt_color", "title": "Color" },
+        { "id": "opt_pattern", "title": "Pattern" }
+      ],
+      "variants": [
+        {
+          "id": "variant_tie_navy_solid",
+          "title": "Navy / Solid",
+          "sku": "TIE-NAVY-SOLID",
+          "inventory_quantity": 15,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_pattern", "value": "Solid" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 4999 }
+          ]
+        },
+        {
+          "id": "variant_tie_burgundy_solid",
+          "title": "Burgundy / Solid",
+          "sku": "TIE-BURG-SOLID",
+          "inventory_quantity": 12,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_color", "value": "Burgundy" },
+            { "option_id": "opt_pattern", "value": "Solid" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 4999 }
+          ]
+        },
+        {
+          "id": "variant_tie_navy_stripe",
+          "title": "Navy / Striped",
+          "sku": "TIE-NAVY-STRIPE",
+          "inventory_quantity": 10,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_color", "value": "Navy" },
+            { "option_id": "opt_pattern", "value": "Striped" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 5499 }
+          ]
+        },
+        {
+          "id": "variant_tie_silver_dot",
+          "title": "Silver / Dotted",
+          "sku": "TIE-SILV-DOT",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_color", "value": "Silver" },
+            { "option_id": "opt_pattern", "value": "Dotted" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 5499 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod_premium_cufflinks",
+      "title": "Premium Cufflink Set",
+      "subtitle": "Sterling silver cufflinks for dress shirts",
+      "description": "Elegant sterling silver cufflinks that add sophistication to any dress shirt. Perfect for formal events and business occasions. Features classic design with premium construction.",
+      "handle": "premium-cufflink-set",
+      "is_giftcard": false,
+      "status": "published",
+      "category_id": "pcat_accessories",
+      "collection_id": "pcol_executive",
+      "tags": [
+        { "id": "tag_accessories", "value": "accessories" },
+        { "id": "tag_cufflinks", "value": "cufflinks" },
+        { "id": "tag_sterling_silver", "value": "sterling-silver" },
+        { "id": "tag_formal", "value": "formal" }
+      ],
+      "options": [
+        { "id": "opt_material", "title": "Material" },
+        { "id": "opt_finish", "title": "Finish" }
+      ],
+      "variants": [
+        {
+          "id": "variant_cufflink_silver_polished",
+          "title": "Sterling Silver / Polished",
+          "sku": "CUFF-SILVER-POL",
+          "inventory_quantity": 8,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_material", "value": "Sterling Silver" },
+            { "option_id": "opt_finish", "value": "Polished" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 12999 }
+          ]
+        },
+        {
+          "id": "variant_cufflink_silver_matte",
+          "title": "Sterling Silver / Matte",
+          "sku": "CUFF-SILVER-MAT",
+          "inventory_quantity": 6,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_material", "value": "Sterling Silver" },
+            { "option_id": "opt_finish", "value": "Matte" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 12999 }
+          ]
+        },
+        {
+          "id": "variant_cufflink_gold_polished",
+          "title": "Gold Plated / Polished",
+          "sku": "CUFF-GOLD-POL",
+          "inventory_quantity": 4,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": [
+            { "option_id": "opt_material", "value": "Gold Plated" },
+            { "option_id": "opt_finish", "value": "Polished" }
+          ],
+          "prices": [
+            { "currency_code": "usd", "amount": 15999 }
+          ]
+        }
+      ]
     }
   ]
 }
